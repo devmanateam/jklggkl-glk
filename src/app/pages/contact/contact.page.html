@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: rgb(204, 96, 96);">
+      <ion-menu-button menu="main-menu" ></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: rgb(204, 96, 96);">İletişim</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <div  style="margin-left:10px;">
+    <ion-label style="color: white;"  >Program ile ilgili hata bildirimi,görüş,şikayet,istek,eleştiri ve soruları bana mail yolu ile iletmek için formu doldurabilirsiniz.</ion-label>
+
+  </div>
+
+  <div padding class="tomiddle">
+    <form [formGroup]="registrationForm" (ngSubmit)="submit()">
+
+      <ion-list>
+        <ion-item class="item-background-color">
+
+            <ion-label style="color:rgb(218, 169, 169);  font-size: 18px; " position="floating">İsim</ion-label>
+            <ion-input [(ngModel)]="xname" formControlName="name" (keyup.enter)="moveFocus(b)"  autocapitalize="true"  inputmode="text"></ion-input>
+
+
+        </ion-item>
+        <div *ngFor="let error of errorMessages.name">
+            <ng-container *ngIf="name.hasError(error.type) &&(name.dirty || name.touched)">
+                <small class="error-message">{{error.message}}</small>
+            </ng-container>
+
+        </div >
+        <ion-item class="item-background-color">
+          <ion-label style="color:rgb(218, 169, 169);  font-size: 18px; " position="floating">E-Mail</ion-label>
+          <ion-input  [(ngModel)]="xemail" formControlName="email"(keyup.enter)="moveFocus(c)"  #b lowercase inputmode="email" ></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.email">
+          <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+              <small class="error-message">{{error.message}}</small>
+          </ng-container>
+      </div>
+
+        <ion-item class="item-background-color">
+          <ion-label style="color:rgb(218, 169, 169);  font-size: 18px; " position="floating">Telefon Numarası</ion-label>
+          <ion-input [(ngModel)]="xphone" formControlName="phone" (keyup.enter)="moveFocus(e)"  #c autocapitalize="true" inputmode="tel" ></ion-input>
+        </ion-item>
+
+        <ion-item interface="popover" class="item-background-color">
+          <ion-label style="color:rgb(218, 169, 169);  font-size: 18px; ">Görüş/Öneri</ion-label>
+          <ion-select (ionChange)="OnChange($event)" #d formControlName="selected" >
+            <ion-select-option *ngFor="let item of data">{{item.name}}</ion-select-option>
+
+
+          </ion-select>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.selected">
+          <ng-container *ngIf="selected.hasError(error.type) &&(selected.dirty || selected.touched)">
+              <small class="error-message">{{error.message}}</small>
+          </ng-container>
+      </div>
+
+
+        <ion-item class="item-background-color">
+          <ion-label style="color:rgb(218, 169, 169);  font-size: 18px; "  position="floating">Mesajınız</ion-label>
+          <ion-textarea [(ngModel)]="xmessagebox" formControlName="messageBox" #e   autocapitalize="true" inputmode="text" ></ion-textarea>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.messageBox">
+          <ng-container *ngIf="messageBox.hasError(error.type) &&(messageBox.dirty || messageBox.touched)">
+              <small class="error-message">{{error.message}}</small>
+          </ng-container>
+      </div>
+      <div style="text-align: center;">
+        <ion-button color="medium" style="max-width: 100%; width: 60%; border-radius: 15px;" [disabled]="!registrationForm.valid" type="submit">Gönder</ion-button>
+
+      </div>
+      </ion-list>
+    </form>
+
+  </div>
+  <ion-item class="item-background-color2" lines="none">
+    <ion-label><span style="color:#69c9d0">Sosyal </span><span style="color:white">Medya </span> <span style="color:#ee1d52;">Hesabımız</span>  için   <ion-icon style="font-size: 23px; margin-left: 5%;" name="return-up-forward-outline"></ion-icon></ion-label>
+    <img src='assets/tiktok.png' width="15%" (click)="openTikTok()">
+
+  </ion-item>
+
+</ion-content>
+
+<ion-footer>
+
+
+
+
+  <ion-label  style="font-size: 12px; background-color: transparent;">
+    Bu programın yapımında TheMovieDB API kullanılmıştır.
+  </ion-label>
+</ion-footer>

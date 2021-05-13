@@ -1,27 +1,256 @@
-#container {
-  text-align: center;
+ion-content{
 
+  --ion-background-color:#000000c5;
+}
+
+ion-header{
+  --ion-background-color:#424141c5;
+}
+ion-card-title { position: relative }
+.center-right{
   position: absolute;
-  left: 0;
-  right: 0;
   top: 50%;
+  right: 10px;
   transform: translateY(-50%);
+  font-size: 27px;
+  color:rgb(138, 16, 16)
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-label{
+  font-size: 1.2em;
+      color: #696363;
+      font-weight: 600;
+      margin-left: 10px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.imgstyle{
+  margin-left: 5%;
+  border-radius: 15px;
+  margin-top: 10px;
+  height:280px;
+   width:280px
 }
 
-#container a {
-  text-decoration: none;
+@media screen and (max-width: 280px)
+
+{
+
+  ion-label{
+         font-size: 0.7em;
+             color: #696363;
+             font-weight: 600;
+             margin-left: 10px;
+  }
+  .imgstyle{
+    margin-left: 0px;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+
+  }
+
 }
+.my-custom-classx{
+background-color: red;
+}
+@media screen and (max-width: 340px)
+
+{
+
+  ion-label{
+         font-size: 1.1em;
+             color: #696363;
+             font-weight: 600;
+             margin-left: 10px;
+  }
+  .imgstyle{
+    margin-left: 5%;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 240px;
+    height: 240px;
+
+  }
+
+}
+
+@media screen and (max-width: 310px)
+
+{
+
+  ion-label{
+         font-size: 1em;
+             color: #696363;
+             font-weight: 600;
+             margin-left: 5px;
+  }
+
+  .imgstyle{
+    margin-left: 5%;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 210px;
+    height: 210px;
+
+  }
+
+
+.watched:hover{
+  color:red;
+}
+
+}
+
+@media screen and (min-width: 400px)
+
+{
+
+  ion-label{
+         font-size: 1.2em;
+             color: #696363;
+             font-weight: 600;
+             margin-left: 10px;
+  }
+  .imgstyle{
+    margin-left: 5%;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 300px;
+    height: 300px;
+
+  }
+
+
+}
+
+@media screen and (min-width: 500px)
+
+{
+
+  ion-label{
+         font-size: 1.4em;
+             color: #696363;
+             font-weight: 600;
+             margin-left: 10px;
+  }
+  .imgstyle{
+    margin-left: 5%;
+    border-radius: 15px;
+    margin-top: 10px;
+    width:  370px;
+    height: 370px;
+
+  }
+
+
+}
+
+@media screen and (min-width: 600px)
+
+{
+
+  ion-label{
+         font-size: 1.6em;
+             color: #696363;
+             font-weight: 600;
+             margin-left: 10px;
+  }
+  .imgstyle{
+    margin-left: 5%;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 420px;
+    height: 420px;
+
+  }
+
+
+}
+
+
+
+
+.renk{
+  color:red;
+  font-size: 35px;
+}
+
+.renkb{
+  color:blue;
+  font-size: 35px;
+}
+
+
+
+
+
+ion-card{
+  background-image: url(../../assets/bg8.jfif);
+  background-size: cover;
+  display: inline-block;
+}
+
+ion-toolbar{
+  background-color:#000000c5;
+
+}
+
+.stylexz{
+ background-image:#83e0a7d0;
+ box-shadow: 1px 1px 110px 1px rgb(94, 216, 63) inset;
+ border: 2px solid  black;
+
+}
+ion-card:hover{
+
+  box-shadow: 1px 1px 220px 1px rgb(24, 14, 14) inset;
+  //rgb(40, 41, 40
+}
+
+ion-input{
+  background-color: rgb(150, 141, 141);
+  max-width: 20em;
+  width: 20em;
+  border-radius: 7px;
+  color: white;
+  padding-left: 5px;
+}
+ion-input:hover{
+  background-color: rgb(209, 201, 201);
+  color: black;
+}
+.css{
+  color: #1877f2;
+   color:red;
+}
+ion-icon{
+  color: white;
+ }
+
+.larger-than-eight{
+  background-color: rgb(4, 124, 20);
+}
+
+.six-to-eight{
+  background-color: rgb(145, 128, 32);
+}
+
+.less-than-six{
+  background-color: rgb(83, 5, 5);
+}
+
+.styley {
+  background-color: #d1d8e0;
+  height: 70vh;
+  width: 22rem;
+  margin: 6rem auto;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 9px 5px 5px rgba(0,0,0,.3);
+  background-image: url(https://source.unsplash.com/random);
+  background-position: center;
+  background-size: cover;
+  z-index: 1;
+}
+

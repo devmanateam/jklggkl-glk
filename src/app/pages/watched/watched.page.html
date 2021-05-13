@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" style="color: rgb(204, 96, 96);">
+      <ion-menu-button menu="main-menu" ></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: rgb(204, 96, 96);">Favoriler</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content fullscreen>
+
+
+  <ion-list *ngFor="let item of listpost;index as i">
+    <!-- <ion-card (click)="deleteCategory(item.id)">
+
+      <ng-container *ngIf="item.poster_path; then thenTemplate; else elseTemplate"></ng-container>
+      <ng-template #thenTemplate>
+        <img class="imgstyle"  bind-src=resim+item.poster_path>
+      </ng-template>
+      <ng-template #elseTemplate>
+        <img class="imgstyle" src="https://www.senersogut.com.tr/public/img/static/resim_yok.jpg">
+
+      </ng-template>
+      <ion-card-content>
+        <ion-label>
+          {{item.overview}}
+        </ion-label>
+      </ion-card-content>
+      <ion-card-content>İtem ID {{item.id}}</ion-card-content>
+      <i>İtem Name {{item.name}}</i>
+      <i>İtem Title {{item.title}}</i>
+
+    </ion-card> -->
+    <ion-card   >
+
+
+      <div *ngIf="listpost" >
+
+        <ion-card-title style="font-size: 18px; margin-left: 10px; margin-top: 10px; margin-bottom: 15px; color: #7e2828;">
+            <strong>{{item.title}}  </strong>
+
+           <ion-icon class="center-right"  (click)="deleteCategory(item.id)" name="trash-sharp"></ion-icon>
+
+
+
+        </ion-card-title>
+
+
+        <ion-card-subtitle style="font-size: 1em;">
+
+
+          <ion-label  >Çıkış Tarihi : {{item.release_date | date:'YYYY'}} </ion-label>
+          <ion-label  >Ortalama Oy
+
+            <ion-badge style="padding:5px;" [class]="getClass(item.vote_average)"> {{item.vote_average}} </ion-badge>
+          </ion-label>
+        </ion-card-subtitle>
+
+        <ng-container *ngIf="item.poster_path; then thenTemplate; else elseTemplate"></ng-container>
+        <ng-template #thenTemplate>
+          <img class="imgstyle" (click)="videomodal(item.id)" bind-src=resim+item.poster_path>
+        </ng-template>
+        <ng-template #elseTemplate>
+          <img class="imgstyle" (click)="videomodal(item.id)" src="https://www.senersogut.com.tr/public/img/static/resim_yok.jpg">
+
+        </ng-template>
+
+
+        <ion-card-content>
+
+          <ng-container *ngIf="item.overview; then theniTemplate; else elseiTemplate"></ng-container>
+          <ng-template #theniTemplate>
+            <i style="font-size: 17px; color: #211c1c;"> {{item.overview}} </i>
+          </ng-template>
+
+          <ng-template  #elseiTemplate >
+
+            <i   style="font-size: 17px; color: #211c1c;"> <span   style="font-size: 17px; color: #8b3535;">Bu filmin Türkçe Açıklaması maalesef bulunmamaktadır. En azından İngilizce versiyonu:
+
+            </span> <br> {{enlistpost[i].overview}} </i>
+
+
+          </ng-template>
+
+
+        </ion-card-content>
+      </div>
+
+    </ion-card>
+
+
+  </ion-list>
+</ion-content>
+
+
+
+
+
+  <!-- <ion-list style="background-color: violet;">
+    <ion-item-sliding *ngFor="let category of categories">
+
+        <ion-item-options side="start">
+          <ion-item-option (click)="editCategory(category)">Edit</ion-item-option>
+        </ion-item-options>
+
+        <ion-item>
+          <ion-label style="color:red">{{category.name}}</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteCategory(category.id)">Delete</ion-item-option>
+        </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list> -->

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-buttons slot="start" style="color: rgb(204, 96, 96);">
+        <ion-menu-button menu="main-menu" ></ion-menu-button>
+      </ion-buttons>
+      <ion-title style="margin-top: 5px; color: rgb(204, 96, 96);">Kategoriler</ion-title>
+    </ion-item>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+<ion-grid>
+  <ion-row  *ngIf="posts">
+    <ion-col *ngFor="let item of posts.genres;index as i" size=6 >
+      <ion-card  style="margin:10px"  (click)="sendid(item.id)">
+        <ion-card-content >{{item.name}}</ion-card-content>
+        <div  class="divstyle">
+        <img  class="imgclass" src="{{kategori[i].img}}">
+
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

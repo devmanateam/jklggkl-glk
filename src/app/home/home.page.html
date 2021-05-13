@@ -1,20 +1,120 @@
-<ion-header [translucent]="true">
+<ion-header style="--background-color:#ff0000;">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+
+    <ion-buttons slot="start" style="color: rgb(204, 96, 96);">
+      <ion-menu-button menu="main-menu" ></ion-menu-button>
+    </ion-buttons>
+
+
+<ion-item>
+  <ion-icon  name="home" style="color:rgb(204, 96, 96); margin-right: 20px;" (click)="gohome()"></ion-icon>
+
+<ion-input  (keyup.enter)="search()" [(ngModel)]="searchtext" #ctrl="ngModel" placeholder=" Film Arama" ></ion-input>
+<ion-icon (click)="search()" name="search" style="margin-left: 5px; color: rgb(204, 96, 96);"></ion-icon>
+
+</ion-item>
+
+
+
+
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div padding style="text-align: center; margin-top: 5px;">
+    <ion-label style="color: rgb(167, 87, 87);">İçeriklerdeki resimlere tıklayarak fragmanları izleyebilirsiniz.</ion-label>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
+
+
+  <ion-grid>
+    <ion-row *ngIf="posts" size="4">
+
+      <ion-card *ngFor="let item of posts.results;index as i"  >
+
+
+        <div *ngIf="posts.results" >
+
+          <ion-card-title style="font-size: 18px; margin-left: 10px; margin-top: 10px; margin-bottom: 15px; color: #7e2828;">
+            <strong>{{item.title}} </strong>
+
+
+            <ion-icon class="center-right" (click)="addCategory(item.id)" name="heart"> </ion-icon>
+
+
+
+          </ion-card-title>
+
+
+          <ion-card-subtitle style="font-size: 1em;">
+            <ion-label  >Çıkış Tarihi : {{item.release_date | date:'YYYY'}} </ion-label>
+            <ion-label  >Ortalama Oy
+
+              <ion-badge style="padding:5px;" [class]="getClass(item.vote_average)"> {{item.vote_average}} </ion-badge>
+            </ion-label>
+          </ion-card-subtitle>
+
+          <ng-container *ngIf="item.poster_path; then thenTemplate; else elseTemplate"></ng-container>
+          <ng-template #thenTemplate>
+            <img class="imgstyle" (click)="videomodal(item.id)" bind-src=resim+item.poster_path>
+
+          </ng-template>
+          <ng-template #elseTemplate>
+            <img class="imgstyle" (click)="videomodal(item.id)" src="https://www.senersogut.com.tr/public/img/static/resim_yok.jpg">
+
+          </ng-template>
+
+
+          <ion-card-content>
+
+            <ng-container *ngIf="item.overview; then theniTemplate; else elseiTemplate"></ng-container>
+            <ng-template #theniTemplate>
+              <i style="font-size: 17px; color: #211c1c;"> {{item.overview}} </i>
+            </ng-template>
+
+            <ng-template  #elseiTemplate >
+
+              <i   style="font-size: 17px; color: #211c1c;"> <span   style="font-size: 17px; color: #8b3535;">Bu filmin Türkçe Açıklaması maalesef bulunmamaktadır. En azından İngilizce versiyonu:
+
+              </span> <br> {{engpost.results[i].overview}} </i>
+
+
+            </ng-template>
+
+
+          </ion-card-content>
+        </div>
+
+      </ion-card>
+
+    </ion-row>
+  </ion-grid>
+<!--
+  <ion-list style="background-color: white;">
+    <ion-item>
+      <ion-label position="floating">Category</ion-label>
+      <ion-input [(ngModel)]="categoryName"></ion-input>
+    </ion-item>
+    <ion-button  expand="block" (click)="addCategory()" >
+    Submit
+    </ion-button>
+  </ion-list> -->
+
+
+
+
+  <ion-button slot="end" color="medium" style="width: 100px; margin-right: 15%;" (click)="onBackClick()"> </ion-button>
+
 </ion-content>
+<ion-footer style="background-color: #424141c5;">
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center; ">
+        <ion-button color="medium" style="width: 100px; margin-right: 15%;" (click)="onBackClick()"> <ion-icon  name="caret-back"></ion-icon> </ion-button>
+        <ion-button style="width: 100px;" color="medium" (click)="onNextClick()"> <ion-icon  name="caret-forward"></ion-icon> </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

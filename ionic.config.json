@@ -1,0 +1,7 @@
+{
+  "name": "Filmist",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
